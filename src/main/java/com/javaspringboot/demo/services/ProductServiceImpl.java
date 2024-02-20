@@ -45,4 +45,15 @@ public class ProductServiceImpl implements ProductService {
         return "Product with ID " + id + " not found!";
     }
 
+    @Override
+    public String deletProduct(Long id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                products.remove(product);
+                return "Product deleted successfully!";
+            }
+        }
+        return "Product with ID " + id + " not found!";
+    }
+
 }

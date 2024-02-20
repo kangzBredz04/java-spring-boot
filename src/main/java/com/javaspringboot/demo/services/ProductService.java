@@ -14,6 +14,6 @@ public interface ProductService {
     // Update data produk by ID produk
     String updateProduct(Long id, Product product);
 
-    
-    
+    // Hapus data produk by ID produk
+    String deletProduct(Long id);
 }
