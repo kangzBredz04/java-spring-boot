@@ -1,48 +1,18 @@
 package com.javaspringboot.demo.models;
 
+import lombok.*;
+
+@Getter // Anotasi @Getter digunakan untuk menghasilkan metode getter untuk semua bidang
+@Setter // Anotasi @Setter digunakan untuk menghasilkan metode setter untuk semua bidang
+@Builder // Anotasi @Builder digunakan untuk menghasilkan builder pattern untuk kelas
+@NoArgsConstructor // Anotasi @NoArgsConstructor digunakan untuk menghasilkan sebuah constructor
+                   // tanpa parameter (default constructor).
+@AllArgsConstructor // Anotasi @AllArgsConstructor digunakan untuk menghasilkan sebuah constructor
+                    // dengan parameter yang sesuai dengan semua bidang (fields) yang dimiliki oleh
+                    // kelas
 public class Product {
     private Long id;
     private String name;
     private String description;
     private Long price;
-
-    public Product(Long id, String name, String description, Long price) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getPrice() {
-        return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
-    }
-
 }

@@ -10,4 +10,10 @@ public interface ProductService {
 
     // Tampil semua data produk
     List<Product> getAllProduct();
+
+    // Update data produk by ID produk
+    String updateProduct(Long id, Product product);
+
+    
+    
 }
