@@ -20,4 +20,10 @@ public interface ProductService {
 
     // Tampil data berdasarkan id
     Optional<Product> getProductById(Long id);
+
+    // Tampil data produk secara ascending berdasarkan id
+    List<Product> sortProductsByIdAscending();
+
+    // Tampil data produk secara descending berdasarkan id
+    List<Product> sortProductsByIdDescending();
 }

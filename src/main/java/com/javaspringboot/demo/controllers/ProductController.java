@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.javaspringboot.demo.models.Product;
 import com.javaspringboot.demo.services.ProductService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/product")
@@ -66,4 +65,15 @@ public class ProductController {
         }
     }
 
+    // Controller tampil data produk secara ascending berdasarkan id
+    @GetMapping("/sort-by-id-ascending")
+    public List<Product> sortProductsByIdAscending() {
+        return productService.sortProductsByIdAscending();
+    }
+
+    // Controller tampil data produk secara descending berdasarkan id
+    @GetMapping("/sort-by-id-descending")
+    public List<Product> sortProductsByIdDescending() {
+        return productService.sortProductsByIdDescending();
+    }
 }

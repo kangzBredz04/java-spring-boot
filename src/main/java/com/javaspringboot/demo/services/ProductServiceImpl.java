@@ -1,6 +1,7 @@
 package com.javaspringboot.demo.services;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,6 +96,20 @@ public class ProductServiceImpl implements ProductService {
         return products.stream()
                 .filter(product -> product.getId() == id)
                 .findFirst();
+    }
+
+    @Override
+    public List<Product> sortProductsByIdAscending() {
+        List<Product> sortedList = new ArrayList<>(products);
+        sortedList.sort(Comparator.comparingLong(Product::getId));
+        return sortedList;
+    }
+
+    @Override
+    public List<Product> sortProductsByIdDescending() {
+        List<Product> sortedList = new ArrayList<>(products);
+        sortedList.sort(Comparator.comparingLong(Product::getId).reversed());
+        return sortedList;
     }
 
 }
