@@ -2,6 +2,7 @@ package com.javaspringboot.demo.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.javaspringboot.demo.models.Product;
 import com.javaspringboot.demo.services.ProductService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/product")
@@ -52,4 +54,16 @@ public class ProductController {
     public String deleteProduct(@PathVariable Long id) {
         return productService.deleteProduct(id);
     }
+
+    // Controller tampil data produk berdasarkan id produk
+    @GetMapping("/get-product/{id}")
+    public Object getMethodName(@PathVariable Long id) {
+        Optional<Product> product = productService.getProductById(id);
+        if (product.isPresent()) {
+            return product.get();
+        } else {
+            return "Product with ID " + id + " not found !!!";
+        }
+    }
+
 }

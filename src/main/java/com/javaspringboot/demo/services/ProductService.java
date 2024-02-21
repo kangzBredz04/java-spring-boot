@@ -1,6 +1,7 @@
 package com.javaspringboot.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.javaspringboot.demo.models.Product;
 
@@ -16,4 +17,7 @@ public interface ProductService {
 
     // Hapus data produk by ID produk
     String deleteProduct(Long id);
+
+    // Tampil data berdasarkan id
+    Optional<Product> getProductById(Long id);
 }

@@ -90,4 +90,11 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public Optional<Product> getProductById(Long id) {
+        return products.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst();
+    }
+
 }
