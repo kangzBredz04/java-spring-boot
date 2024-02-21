@@ -2,6 +2,7 @@ package com.javaspringboot.demo.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -69,12 +70,24 @@ public class ProductServiceImpl implements ProductService {
         // return "Product with ID " + id + " not found!";
 
         // Cara 2 hapus data arraylist menggunakan lambda
-        products.stream()
-                .filter(product -> product.getId() == id)
-                .findAny()
-                .ifPresent(product -> products.remove(product));
+        // products.stream()
+        // .filter(product -> product.getId() == id)
+        // .findAny()
+        // .ifPresent(product -> products.remove(product));
 
-        return "Successfully remove from list";
+        // return "Successfully remove from list";
+
+        // Cara 3 hapus data arraylist menggunakan lambda
+        Optional<Product> productToDelete = products.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst();
+
+        if (productToDelete.isPresent()) {
+            products.remove(productToDelete.get());
+            return "Product with ID " + id + " deleted successfully!";
+        } else {
+            return "Data dengan id " + id + " tidak ada";
+        }
     }
 
 }
