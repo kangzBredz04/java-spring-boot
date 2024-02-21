@@ -34,26 +34,47 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public String updateProduct(Long id, Product product) {
-        for (Product pr : products) {
-            if (pr.getId() == id) {
-                pr.setName(product.getName());
-                pr.setDescription(product.getDescription());
-                pr.setPrice(product.getPrice());
-                return "Product updated successfully!";
-            }
-        }
-        return "Product with ID " + id + " not found!";
+        // Cara 1 update data arraylist
+        // for (Product pr : products) {
+        // if (pr.getId() == id) {
+        // pr.setName(product.getName());
+        // pr.setDescription(product.getDescription());
+        // pr.setPrice(product.getPrice());
+        // return "Product updated successfully!";
+        // }
+        // }
+        // return "Product with ID " + id + " not found!";
+
+        // Cara 2 update data arraylist menggunakan sintak lambda
+        products.stream()
+                .filter(p -> p.getId() == id)
+                .findAny()
+                .ifPresent(p -> {
+                    p.setName(product.getName());
+                    p.setDescription(product.getDescription());
+                    p.setPrice(product.getPrice());
+                });
+        return "Successfully update from list";
     }
 
     @Override
-    public String deletProduct(Long id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                products.remove(product);
-                return "Product deleted successfully!";
-            }
-        }
-        return "Product with ID " + id + " not found!";
+    public String deleteProduct(Long id) {
+        // Cara 1 hapus data arraylist
+        // for (Product product : products) {
+        // if (product.getId() == id) {
+        // products.remove(product);
+        // return "Product deleted successfully!";
+        // }
+        // }
+        // return "Product with ID " + id + " not found!";
+
+        // Cara 2 hapus data arraylist menggunakan lambda
+        products.stream()
+                .filter(product -> product.getId() == id)
+                .findAny()
+                .ifPresent(product -> products.remove(product));
+
+        return "Successfully remove from list";
     }
 
 }

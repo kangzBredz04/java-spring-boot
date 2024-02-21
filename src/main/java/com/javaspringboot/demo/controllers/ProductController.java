@@ -50,6 +50,6 @@ public class ProductController {
     // Controller delete data produk berdasarkan id produk
     @DeleteMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable Long id) {
-        return productService.deletProduct(id);
+        return productService.deleteProduct(id);
     }
 }
