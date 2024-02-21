@@ -1,5 +1,6 @@
 package com.javaspringboot.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,15 @@ public class ProductController {
 
     // Controller tampil data produk secara keseluruhan
     @GetMapping("/all-product")
-    public List<Product> allProduct() {
-        return productService.getAllProduct();
+    public List<?> allProduct() {
+        List<Product> products = productService.getAllProduct();
+        if (products.isEmpty()) {
+            // Jika data kosong, kembalikan ArrayList berisi pesan "Data belum ada"
+            List<String> message = new ArrayList<>();
+            message.add("Data belum ada");
+            return message;
+        }
+        return products;
     }
 
     // Controller update data produk berdasarkan id produk
